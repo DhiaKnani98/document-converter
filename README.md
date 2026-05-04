@@ -74,4 +74,3 @@ A single `Word.Application` COM instance handles the entire batch sequentially, 
 
 - If Microsoft Word is not detected at startup, a native error dialog appears before the window opens.
 - Conversion errors are logged to `%APPDATA%\ectd-converter\conversion-errors.log`.
-- For strict **PDF/A-1b** compliance (required by some eCTD submissions), set `UseISO19005_1 = $true` in `scripts/word_convert.ps1`.
