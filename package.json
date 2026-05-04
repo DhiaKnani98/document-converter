@@ -1,0 +1,54 @@
+{
+  "name": "ectd-converter",
+  "version": "1.0.0",
+  "description": "DOCX ↔ PDF converter for eCTD pharmaceutical contracts",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --inspect",
+    "gen-icon": "node scripts/gen-icon.js",
+    "dist": "npm run gen-icon && electron-builder --win"
+  },
+  "build": {
+    "appId": "com.ectd.converter",
+    "productName": "eCTD Precision Converter",
+    "copyright": "Copyright © 2026",
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "wordConverter.js",
+      "renderer/**/*",
+      "scripts/word_convert.ps1",
+      "assets/icon.ico"
+    ],
+    "asarUnpack": [
+      "scripts/word_convert.ps1"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis",     "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "eCTD Converter"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-portable.exe"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^26.8.1"
+  }
+}
