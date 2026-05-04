@@ -1,4 +1,4 @@
-# eCTD Precision Converter
+# Precision Converter
 
 A minimalist desktop application for converting **DOCX ↔ PDF**.
 
